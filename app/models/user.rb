@@ -6,4 +6,6 @@ class User < ApplicationRecord
 
   validates :name, presence: true
   validates :email, format: { with: /(\S+)@(\S+)/ }
+
+  has_one :worker, dependent: :destroy
 end
