@@ -41,11 +41,4 @@ class WorkersController < ApplicationController
   def workers_params
     params.require(:worker).permit(:title, :dept)
   end
-
-  # before_action :ensure_profile_ownership, only: [:edit, :update, :destroy]
-  def ensure_profile_ownership
-    if current_user.profile_id != params[:id]
-      redirect_to profile_path(params[:id]), notice: 'Some message about not having access to perform that action'
-    end
-  end
 end
