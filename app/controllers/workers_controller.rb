@@ -9,10 +9,11 @@ class WorkersController < ApplicationController
     @worker = @user.build_worker(worker_params)
 
     if @worker.save
-      redirect_to @worker, 
-                flash[:notice] = "Welcome! You're now eligible worker"
+            notice: "Welcome! You're now eligible worker"
+              redirect_to user_worker_path(@worker)
+                
     else
-      render :new 
+      render :new, status: :unprocessable_entity 
   end
 
   def edit
