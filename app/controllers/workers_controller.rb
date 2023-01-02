@@ -1,4 +1,10 @@
 class WorkersController < ApplicationController
+
+  def show
+    @user = User.find(params[:user_id])
+    @worker = @user.worker
+  end
+
   def new
     @user = User.find(params[:user_id])
     @worker = @user.build_worker
@@ -9,11 +15,11 @@ class WorkersController < ApplicationController
     @worker = @user.build_worker(worker_params)
 
     if @worker.save
-            notice: "Welcome! You're now eligible worker"
-              redirect_to user_worker_path(@worker)
-                
+        redirect_to user_worker_url(@user, @worker),
+            notice: "Welcome! worker enrolled successfully"                 
     else
       render :new, status: :unprocessable_entity 
+    end
   end
 
   def edit
@@ -26,10 +32,11 @@ class WorkersController < ApplicationController
     @worker = @user.worker
     
     if @worker.update(worker_params)
-         notice: "record updated successfully"
-            redirect_to user_worker_path(@worker)
+          redirect_to user_worker_url(@user, @worker),
+              notice: "record updated successfully"      
     else
       render :edit, status: :unprocessable_entity
+    end
   end
 
 
@@ -39,7 +46,7 @@ class WorkersController < ApplicationController
     
   end
 
-  def workers_params
+  def worker_params
     params.require(:worker).permit(:title, :dept)
   end
 end
