@@ -1,0 +1,16 @@
+<h3>Worker's Record for: <%= @user.name.capitalize %></h3>
+
+<p>
+  <strong>Title:</strong>
+  <%= @worker.title %>
+</p>
+
+<p>
+  <strong>Department:</strong>
+  <%= @worker.dept %>
+</p>
+
+<p>
+  <%= link_to "Edit Worker", edit_user_worker_path(@user, @worker) %>
+| <%= link_to "All Workers", user_workers_path(@user) %>
+</p>
