@@ -1,4 +1,7 @@
 class WorkersController < ApplicationController
+  def index
+    @workers = Worker.all
+  end
 
   def show
     @user = User.find(params[:user_id])

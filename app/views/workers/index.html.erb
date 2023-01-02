@@ -1,0 +1,21 @@
+<table>
+  <thead>
+    <tr>
+      <th>Name</th> 
+      <th>Title</th>
+      <th>Department</th>
+    </tr>
+    
+  </thead>
+  <tbody>
+    <% @workers.each do |worker| %>
+      <tr>
+        <td><%= link_to worker.user.name.capitalize, user_worker_path(worker.user, worker) %></td>
+        <td><%= worker.title %></td>
+        <td><%= worker.dept %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
