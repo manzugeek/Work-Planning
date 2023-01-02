@@ -1,0 +1,15 @@
+<%= form_with model: [@user, @worker] do |f| %>
+
+<div class="field">
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
+</div>
+
+<div class="field">
+    <%= f.label :dept %><br />
+    <%= f.text_field :dept %>
+</div>
+
+<%= f.submit %>
+  
+<% end %>
