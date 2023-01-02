@@ -16,7 +16,21 @@ class WorkersController < ApplicationController
   end
 
   def edit
+    @user = User.find(params[:user_id])
+    @worker = @user.worker
   end
+
+  def update
+    @user = User.find(params[:user_id])
+    @worker = @user.worker
+    
+    if @worker.update(worker_params)
+         notice: "record updated successfully"
+            redirect_to user_worker_path(@worker)
+    else
+      render :edit, status: :unprocessable_entity
+  end
+
 
   private
 
