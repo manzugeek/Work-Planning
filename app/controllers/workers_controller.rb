@@ -1,20 +1,19 @@
 class WorkersController < ApplicationController
+  before_action :set_worker, except: [:index]
+  
   def index
     @workers = Worker.all
   end
 
   def show
-    @user = User.find(params[:user_id])
     @worker = @user.worker
   end
 
   def new
-    @user = User.find(params[:user_id])
     @worker = @user.build_worker
   end
 
   def create
-    @user = User.find(params[:user_id])
     @worker = @user.build_worker(worker_params)
 
     if @worker.save
@@ -26,12 +25,10 @@ class WorkersController < ApplicationController
   end
 
   def edit
-    @user = User.find(params[:user_id])
     @worker = @user.worker
   end
 
   def update
-    @user = User.find(params[:user_id])
     @worker = @user.worker
     
     if @worker.update(worker_params)
@@ -46,7 +43,7 @@ class WorkersController < ApplicationController
   private
 
   def set_worker
-    
+    @user = User.find(params[:user_id])
   end
 
   def worker_params
