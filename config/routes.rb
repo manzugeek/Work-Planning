@@ -6,5 +6,5 @@ Rails.application.routes.draw do
     resources :workers
   end
 
-  # root "articles#index"
+  root "workers#index"
 end
