@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_01_01_151430) do
+ActiveRecord::Schema[7.0].define(version: 2023_01_04_073247) do
+  create_table "shifts", force: :cascade do |t|
+    t.integer "start_at"
+    t.integer "end_at"
+    t.integer "worker_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["worker_id"], name: "index_shifts_on_worker_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -33,5 +42,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_01_151430) do
     t.index ["user_id"], name: "index_workers_on_user_id"
   end
 
+  add_foreign_key "shifts", "workers"
   add_foreign_key "workers", "users"
 end
