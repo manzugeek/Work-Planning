@@ -1,5 +1,5 @@
 class WorkersController < ApplicationController
-  before_action :set_worker, except: [:index]
+  before_action :set_user, only: [:show, :new, :create, :edit, :update, :destroy]
   
   def index
     @workers = Worker.all
@@ -33,16 +33,24 @@ class WorkersController < ApplicationController
     
     if @worker.update(worker_params)
           redirect_to user_worker_url(@user, @worker),
-              notice: "record updated successfully"      
+              notice: "Record updated successfully"      
     else
       render :edit, status: :unprocessable_entity
     end
   end
 
+  def destroy
+    @worker = @user.worker
+
+    @worker.destroy
+      redirect_to user_workers_path(@user),
+                                   status: :see_other 
+  end
+
 
   private
 
-  def set_worker
+  def set_user
     @user = User.find(params[:user_id])
   end
 

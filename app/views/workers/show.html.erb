@@ -11,6 +11,10 @@
 </p>
 
 <p>
-  <%= link_to "Edit Worker", edit_user_worker_path(@user, @worker) %>
+<% if @worker.nil? %>
+  <%= link_to "Add Worker", new_user_worker_path(@user) %>
+<% end %>
+| <%= link_to "Edit Worker", edit_user_worker_path(@user, @worker) %>
 | <%= link_to "All Workers", user_workers_path(@user) %>
+| <%= link_to "Delete", user_worker_path(@user, @worker), data: { turbo_method: :delete } %>
 </p>

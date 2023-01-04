@@ -20,6 +20,7 @@ gem "jsbundling-rails"
 
 # Hotwire's SPA-like page accelerator [https://turbo.hotwired.dev]
 gem "turbo-rails"
+gem 'jquery-rails'
 
 # Hotwire's modest JavaScript framework [https://stimulus.hotwired.dev]
 gem "stimulus-rails"
@@ -74,3 +75,5 @@ group :development do
   gem 'spring-commands-rspec'
 end
 
+
+gem "hotwire-rails", "~> 0.1.3"
