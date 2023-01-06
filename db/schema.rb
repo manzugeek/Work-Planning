@@ -10,13 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_01_04_073247) do
+ActiveRecord::Schema[7.0].define(version: 2023_01_04_115915) do
   create_table "shifts", force: :cascade do |t|
     t.integer "start_at"
     t.integer "end_at"
     t.integer "worker_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "slot"
     t.index ["worker_id"], name: "index_shifts_on_worker_id"
   end
 

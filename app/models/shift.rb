@@ -3,17 +3,26 @@ class Shift < ApplicationRecord
 
   validates :start_at, presence: true
   validates :end_at, presence: true
-  validates :shift_length
-  validates_timeliness :start_time, on: :create, on_or_before: Time.now.beginning_of_day, 
-              on_or_before_message: "must start at 0, 8, or 16 hours"
-  validates_timeliness :end_time, on: :create, on_or_after: Time.now.beginning_of_day + 8.hours,
-               on_or_after_message: "must end at 8, 16, or 24 hours"
- 
+  validates :slot, presence: true
+  validate :validate_shift_time_frame
+  
+  SHIFTS = {
+    "0-8" => 1,
+    "8-16" => 2,
+    "16-24" => 3
+  }
 
-  def shift_length
-    if end_time - start_time != 28800
-      errors.add(:shift, "must be at least 8 hours after the start time")
+  private
+
+  def validate_shift_time_frame
+    # Get the start and end times for the shift
+    shift_start_time = Time.zone.at(start_at).beginning_of_day + start_at.hours
+    shift_end_time = Time.zone.at(end_at).beginning_of_day + end_at.hours
+
+    # Check if the start and end times fall within a 8-hour time frame
+    if shift_end_time - shift_start_time > 8.hours
+      errors.add(:start_at, "shift must be 8 hours or less")
     end
   end
-
 end
+
