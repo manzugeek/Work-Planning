@@ -17,7 +17,7 @@ class Users::SessionsController < Devise::SessionsController
   def destroy
       super do
         # Turbo requires redirects be :see_other (303); so override Devise default (302)
-        return redirect_to after_sign_out_path_for(resource_name), 
+        return redirect_to after_sign_out_path_for(sesions), 
                         status: :see_other
       end
   end
