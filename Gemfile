@@ -62,6 +62,9 @@ group :development, :test do
   gem 'capybara'
   gem 'simplecov', :require => false, :group => :test
   gem "factory_bot_rails"
+  gem 'shoulda-matchers',
+              git: 'https://github.com/thoughtbot/shoulda-matchers.git'
+              
 end
 
 group :development do

@@ -1,3 +1,10 @@
+GIT
+  remote: https://github.com/thoughtbot/shoulda-matchers.git
+  revision: d33df494928634faa71d06f489b76c0c0b43dba6
+  specs:
+    shoulda-matchers (5.3.0)
+      activesupport (>= 5.2.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -276,6 +283,7 @@ DEPENDENCIES
   rails-controller-testing
   redis (~> 4.0)
   rspec-rails
+  shoulda-matchers!
   simplecov
   spring
   spring-commands-rspec
