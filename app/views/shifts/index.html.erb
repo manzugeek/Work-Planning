@@ -1,0 +1,16 @@
+<h3>Shifts Dashboard</h3>
+<table>
+  <tr>
+    <th>Worker</th>
+    <th>Start time</th>
+    <th>End time</th>
+  </tr>
+  <% @shifts.each do |shift| %>
+    <tr>
+      <td><%= shift.worker.user.capitalize_name %></td>
+      <td><%= shift.start_at %></td>
+      <td><%= shift.end_at %></td>
+    </tr>
+  <% end %>
+</table>
+

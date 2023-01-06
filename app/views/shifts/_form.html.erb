@@ -1,0 +1,21 @@
+<%= form_with model: [@worker, @shift] do |f| %>
+  <div>
+    <%= f.label :slot, "Shift" %>
+  <%= f.select :slot, options_for_select(Shift::SHIFTS) %>
+  </div><br>
+
+  <div>
+    <%= f.label :start_at, "Start Time" %>
+    <%= f.number_field :start_at%>
+  </div><br>
+
+  <div>
+    <%= f.label :end_at, "End Time" %>
+    <%= f.number_field :end_at %>
+  <div><br>
+
+  <div>
+    <%= f.submit "Your shift" %>
+  </div>
+  
+<% end %>
